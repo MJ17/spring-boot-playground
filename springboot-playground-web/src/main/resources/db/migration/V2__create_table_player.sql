@@ -1,0 +1,6 @@
+
+CREATE TABLE player
+(
+    id VARCHAR(32) PRIMARY KEY,
+    name VARCHAR(100)
+)
