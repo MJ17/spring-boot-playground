@@ -11,14 +11,12 @@ import javax.persistence.Entity;
 @Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Book extends AbstractPersistable<String> {
+public class Player extends AbstractPersistable<String> {
     @Column(unique = true)
     String id;
-    String title;
-    String author;
-    String publisher;
+    String name;
 
-    public Book(String id) {
+    public Player(String id) {
         this.id = id;
     }
 }
