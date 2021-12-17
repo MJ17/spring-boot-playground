@@ -1,13 +1,14 @@
 package com.playground.springboot;
 
 import lombok.*;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor
 @Entity
-public class Player {
+public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,12 +17,8 @@ public class Player {
     @Column(length = 100, nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private Long teamId;
-
     @Builder
-    public Player(String name, Long teamId) {
+    public Team(String name) {
         this.name = name;
-        this.teamId = teamId;
     }
 }
