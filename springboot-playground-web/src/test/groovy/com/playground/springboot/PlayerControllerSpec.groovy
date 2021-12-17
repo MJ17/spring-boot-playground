@@ -15,7 +15,7 @@ import spock.lang.Specification
 
 @SpringBootTest(classes = Application.class)
 @ContextConfiguration
-class BookControllerSpec extends Specification {
+class PlayerControllerSpec extends Specification {
 
     @Autowired
     WebApplicationContext webApplicationContext
@@ -28,32 +28,30 @@ class BookControllerSpec extends Specification {
         mapper = new ObjectMapper()
     }
 
-    def "when get is performed then the response has status 200 and content is 'hello'"() {
+    def "when get is performed then the response has status 200"() {
         given:
 
         when:
         def result = mvc.perform(
-                MockMvcRequestBuilders.get("/books/123")
+                MockMvcRequestBuilders.get("/players/1")
         ).andReturn().getResponse()
 
         then:
         result.status == HttpStatus.OK.value()
-        result.contentAsString == "Book id is 123"
     }
 
-    def "when post is performed then the response has status 200 and content is bookId"() {
+    def "when post is performed then the response has status 200"() {
         given:
         HttpHeaders headers = new HttpHeaders()
         headers.put(HttpHeaders.AUTHORIZATION, Arrays.asList("Bearer token"))
 
-        CreateBookRequest request = new CreateBookRequest()
-        request.title = "The Old Man and the Sea"
-        request.author = "Hemingway";
-        request.publisher = "Good Books"
+        CreatePlayerRequest request = new CreatePlayerRequest()
+        request.name = "Son"
+        request.teamId = 1
 
         when:
         def result = mvc.perform(
-                MockMvcRequestBuilders.post("/books")
+                MockMvcRequestBuilders.post("/players")
                         .headers(headers)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(mapper.writeValueAsString(request))
@@ -61,9 +59,8 @@ class BookControllerSpec extends Specification {
 
         then:
         result.status == HttpStatus.OK.value()
-        result.contentAsString.contains(request.getTitle())
-        result.contentAsString.contains(request.getAuthor())
-        result.contentAsString.contains(request.getPublisher())
+        result.contentAsString.contains(request.getName())
+        result.contentAsString.contains(request.getTeamId())
     }
 
 }

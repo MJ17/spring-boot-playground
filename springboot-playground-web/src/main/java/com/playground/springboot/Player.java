@@ -1,22 +1,27 @@
 package com.playground.springboot;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.data.jpa.domain.AbstractPersistable;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
-@Data
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+@NoArgsConstructor
 @Entity
-public class Player extends AbstractPersistable<String> {
-    @Column(unique = true)
-    String id;
-    String name;
+public class Player {
 
-    public Player(String id) {
-        this.id = id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(length = 100, nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private Long teamId;
+
+    @Builder
+    public Player(String name, Long teamId) {
+        this.name = name;
+        this.teamId = teamId;
     }
 }
