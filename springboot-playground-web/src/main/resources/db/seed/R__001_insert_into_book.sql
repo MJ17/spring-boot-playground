@@ -1,0 +1,1 @@
+INSERT INTO book (id, title, author, publisher) VALUES ('123', 'Old man and the sea', 'hermingway', 'goodbooks');
