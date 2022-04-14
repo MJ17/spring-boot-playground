@@ -32,18 +32,18 @@ subprojects {
 
     dependencies {
         // spring
-        compile ('org.springframework.boot:spring-boot-starter-web')
-        compile ('org.springframework.boot:spring-boot-starter-webflux')
+        implementation ('org.springframework.boot:spring-boot-starter-web')
+        implementation ('org.springframework.boot:spring-boot-starter-webflux')
 
         // test
-        testCompile('org.springframework.boot:spring-boot-starter-test')
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
 
         // spock
-        testCompile "org.spockframework:spock-core:2.0-groovy-3.0"
-        testCompile "org.spockframework:spock-spring:2.0-groovy-3.0"
+        testImplementation "org.spockframework:spock-core:2.0-groovy-3.0"
+        testImplementation "org.spockframework:spock-spring:2.0-groovy-3.0"
 
         // lombok
-        compile 'org.projectlombok:lombok:1.18.12'
+        implementation 'org.projectlombok:lombok:1.18.12'
         annotationProcessor  'org.projectlombok:lombok:1.18.12'
         annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
     }

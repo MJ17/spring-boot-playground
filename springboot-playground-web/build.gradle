@@ -10,16 +10,16 @@ repositories {
 }
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-jdbc')
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('org.springframework.boot:spring-boot-starter-jdbc')
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
 
-    compile 'com.h2database:h2:1.4.197'
-    runtime 'com.h2database:h2'
+    implementation 'com.h2database:h2:1.4.197'
+    implementation 'com.h2database:h2'
 
-    compile 'org.flywaydb:flyway-core'
+    implementation 'org.flywaydb:flyway-core'
 
     // Jasypt
     implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
 
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
 }
