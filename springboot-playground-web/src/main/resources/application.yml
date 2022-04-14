@@ -21,3 +21,9 @@ spring:
     schemas: test-db
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
+
+# jasypt
+jasypt:
+  encryptor:
+    password: PLACEHOLDER
+    poolSize: 50
